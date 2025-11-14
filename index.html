@@ -836,17 +836,17 @@
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showSection('home', event)">🏠 Home</button>
-            <button class="nav-tab" onclick="showSection('select', event)">🌿 Select Plant</button>
-            <button class="nav-tab" id="exploreTab" onclick="showSection('explore', event)" style="display: none;">🔬 Explore Data</button>
-            <button class="nav-tab" id="screenTab" onclick="showSection('screen', event)">⚡ Screen Compounds</button>
-            <button class="nav-tab" id="resultsTab" onclick="showSection('results', event)">📊 Results</button>
-            <button class="nav-tab" onclick="showSection('guide', event)">📚 Data Guide</button>
-            <button class="nav-tab" onclick="showSection('about', event)">ℹ️ About</button>
+            <button class="nav-tab active" data-section="home">🏠 Home</button>
+<button class="nav-tab" data-section="select">🌿 Select Plant</button>
+<button class="nav-tab" data-section="explore">🔬 Explore Data</button>
+<button class="nav-tab" data-section="screen">⚡ Screen Compounds</button>
+<button class="nav-tab" data-section="results">📊 Results</button>
+<button class="nav-tab" data-section="guide">📚 Data Guide</button>
+<button class="nav-tab" data-section="about">ℹ️ About</button>
         </div>
 
         <!-- Home Section -->
-        <div id="home" class="content-section active">
+        <div id="home-section" class="content-section active">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">Welcome to Plant-Based Antipyretic Drug Discovery</h2>
             
             <div class="info-box">
@@ -918,7 +918,7 @@
         </div>
 
         <!-- Plant Selection Section -->
-        <div id="select" class="content-section">
+        <div id="select-section" class="content-section">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">🌿 Select Medicinal Plant</h2>
             
             <div class="info-box">
@@ -945,7 +945,7 @@
         </div>
         
         <!-- Explore Data Section -->
-        <div id="explore" class="content-section">
+        <div id="explore-section" class="content-section">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">🔬 Explore Phytochemical Data</h2>
              <div class="info-box">
                 <div class="info-title">Complete Dataset with Advanced Features</div>
@@ -989,13 +989,13 @@
             </div>
             
              <div style="text-align: center; margin-top: 40px;">
-    <button class="btn btn-secondary" onclick="showSection('select')" style="margin-right: 15px;">← Change Plant</button>
+    <button class="btn btn-secondary" onclick="navigateToSection('select')" style="margin-right: 15px;">← Change Plant</button>
     <button class="btn btn-primary" onclick="proceedToScreening()">Proceed to Screening →</button>
 </div>
         </div>
 
         <!-- Screening Section -->
-        <div id="screen" class="content-section">
+        <div id="screen-section" class="content-section">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">⚡ Interactive Compound Screening</h2>
             
             <div class="info-box">
@@ -1164,13 +1164,13 @@
             </div>
 
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-secondary" onclick="showSection('explore')" style="margin-right: 15px;">← Back to Data</button>
+                <button class="btn btn-secondary" onclick="navigateToSection('explore')" style="margin-right: 15px;">← Back to Data</button>
                 <button class="btn btn-primary" onclick="showResults()">View Results →</button>
             </div>
         </div>
 
         <!-- Results Section -->
-        <div id="results" class="content-section">
+        <div id="results-section" class="content-section">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">📊 Screened Compounds - Final Results</h2>
             
             <div class="info-box">
@@ -1186,13 +1186,13 @@
             <div id="resultsTableContainer"></div>
 
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-secondary" onclick="showSection('screen')" style="margin-right: 15px;">← Modify Filters</button>
+                <button class="btn btn-secondary" onclick="navigateToSection('screen')" style="margin-right: 15px;">← Modify Filters</button>
                 <button class="btn btn-primary" onclick="exportResults()">📥 Export Results (CSV)</button>
             </div>
         </div>
 
         <!-- Data Collection Guide Section - NEW -->
-        <div id="guide" class="content-section">
+        <div id="guide-section" class="content-section">
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">📚 Comprehensive Data Collection Guide</h2>
             
             <div class="info-box">
@@ -1522,12 +1522,12 @@ print(f"\nCompleted! {len(results)} compounds saved.")
             </div>
 
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-primary" onclick="showSection('home')">← Back to Home</button>
+                <button class="btn btn-primary" onclick="navigateToSection('home')">← Back to Home</button>
             </div>
         </div>
 
         <!-- About Section -->
-        <div id="about" class="content-section">
+        <div id="about-section" class="content-section">
             <!-- *** UPDATED H2 *** -->
             <h2 style="color: var(--primary-blue); margin-bottom: 20px;">ℹ️ About DrugDiscovery 2.1</h2>
             
@@ -82585,6 +82585,68 @@ let workflowState = {
                 screeningApplied: false
             };
         };
+        // Hash-based routing - ADD THIS NEW SECTION
+const sectionMap = {
+    'home': 'home-section',
+    'select': 'select-section',
+    'explore': 'explore-section',
+    'screen': 'screen-section',
+    'results': 'results-section',
+    'guide': 'guide-section',
+    'about': 'about-section'
+};
+
+function navigateToSection(sectionName) {
+    window.location.hash = sectionName;
+}
+
+function handleHashChange() {
+    let hash = window.location.hash.slice(1);
+    if (!hash || !sectionMap[hash]) {
+        hash = 'home';
+        window.location.hash = 'home';
+    }
+    showSectionByHash(hash);
+}
+
+function showSectionByHash(hash) {
+    const sectionId = sectionMap[hash];
+    
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+    
+    // Update nav tabs
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('data-section') === hash) {
+            tab.classList.add('active');
+        }
+    });
+    
+    window.scrollTo(0, 0);
+}
+
+// Listen for hash changes
+window.addEventListener('hashchange', handleHashChange);
+
+// Add click listeners to nav tabs
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        navigateToSection(section);
+    });
+});
+
+// Handle initial load
+handleHashChange();
 
         // Build search index
         function buildSearchIndex() {
@@ -82605,12 +82667,12 @@ let workflowState = {
           // Start discovery workflow
         function startDiscovery() {
             workflowState.startDiscoveryClicked = true;
-            showSection('select');
+            navigateToSection('select');
         }
          // Proceed to screening workflow
         function proceedToScreening() {
             workflowState.dataExplored = true;
-            showSection('screen');
+            navigateToSection('screen');
         }
 
         // Initialize plant grid
@@ -82703,12 +82765,11 @@ let workflowState = {
             applyPreset('moderate');
             
             displayExploreTable();
-            document.getElementById('exploreTab').style.display = 'block';
             
             // Mark plant as selected
             workflowState.plantSelected = true;
             
-            showSection('explore');
+            navigateToSection('explore');
         }
 
         // Search compounds
@@ -83125,7 +83186,7 @@ function updateChart(stageResults) {
                 return;
             }
             workflowState.screeningApplied = true;
-            showSection('results');
+            navigateToSection('results');
             displayResults();
         }
 
