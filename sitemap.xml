@@ -1,69 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- Home Page -->
+  <!-- Main Application URL -->
   <url>
     <loc>https://biswa2502.github.io/DrugDiscov/</loc>
     <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Home Section (Hash Navigation) -->
+  <!-- Index page explicitly -->
   <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#home</loc>
+    <loc>https://biswa2502.github.io/DrugDiscov/index.html</loc>
     <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  
-  <!-- Plant Selection Section -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#select</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Explore Data Section -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#explore</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Screening Section -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#screen</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Results Section -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#results</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Data Collection Guide -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#guide</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- About Section -->
-  <url>
-    <loc>https://biswa2502.github.io/DrugDiscov/#about</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 
 </urlset>
