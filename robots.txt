@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://biswa2502.github.io/DrugDiscov/sitemap.xml
