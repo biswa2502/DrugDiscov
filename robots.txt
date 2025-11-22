@@ -1,4 +1,68 @@
+# robots.txt for DrugDiscovery 2.1
+# https://biswa2502.github.io/DrugDiscov/
+
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
+# Disallow crawling of specific file types (if needed)
+# Uncomment if you want to block JavaScript/CSS files from indexing
+# Disallow: /*.js$
+# Disallow: /*.css$
+
+# Allow important resources for rendering
+Allow: /style.css
+Allow: /script.js
+Allow: /data.js
+
+# Sitemap location
 Sitemap: https://biswa2502.github.io/DrugDiscov/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+# Set to 1 second between requests
+Crawl-delay: 1
+
+# Specific directives for major search engines
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo Bot
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu Bot (Chinese search engine)
+User-agent: Baiduspider
+Allow: /
+
+# Yandex Bot (Russian search engine)
+User-agent: Yandex
+Allow: /
+
+# Block bad bots (optional - uncomment if needed)
+# User-agent: AhrefsBot
+# Disallow: /
+
+# User-agent: SemrushBot
+# Disallow: /
+
+# User-agent: MJ12bot
+# Disallow: /
+
+# User-agent: DotBot
+# Disallow: /
